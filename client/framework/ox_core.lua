@@ -2,8 +2,8 @@ local config = require "config"
 local ox = {}
 local localOfficer = {}
 
-ox.loadedEvent = 'ox:playerLoaded'
-ox.logoutEvent = 'ox:playerLogout'
+ox.loadedEvent = 'QBCore:Client:OnPlayerLoaded'
+ox.logoutEvent = 'qbx_core:client:playerLoggedOut'
 ox.setGroupEvent = 'ox:setGroup'
 
 local function getGroupState(groupName)
