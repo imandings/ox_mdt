@@ -117,7 +117,7 @@ function ox.getVehicles(parameters)
         {}
 
     for _, v in pairs(vehicles) do
-        v.label = Ox.GetVehicleData(v.model)?.name or v.model
+        v.label = v.model -- Ox.GetVehicleData(v.model)?.name or v.model
         v.model = nil
     end
 
@@ -430,7 +430,7 @@ end
 ---@param source number
 ---@param data {stateId: string, group: string, grade: number}
 registerCallback('ox_mdt:setOfficerRank', function(source, data)
-    local player = Ox.GetPlayerFromFilter({stateId = data.stateId})
+    local player = exports.qbx_core:GetPlayerByCitizenId({citizenid = data.stateId})
 
     if player then
         for i = 1, #config.policeGroups do
@@ -470,7 +470,7 @@ end, 'set_officer_rank')
 ---@param source number
 ---@param stateId number
 registerCallback('ox_mdt:fireOfficer', function(source, stateId)
-    local player = Ox.GetPlayerFromFilter({stateId = stateId})
+    local player = exports.qbx_core:GetPlayerByCitizenId({citizenid = stateId})
 
     if player then
         for i = 1, #config.policeGroups do
@@ -491,7 +491,7 @@ end, 'fire_officer')
 ---@param source number
 ---@param stateId string
 registerCallback('ox_mdt:hireOfficer', function(source, stateId)
-    local player = Ox.GetPlayerFromFilter({stateId = stateId})
+    local player = exports.qbx_core:GetPlayerByCitizenId({citizenid = stateId})
 
     if player then
         if player.getGroup(config.policeGroups) then return false end
