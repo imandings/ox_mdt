@@ -34,7 +34,7 @@ CreateThread(function()
 end)
 
 local function addOfficer(playerId)
-    local player = Ox.GetPlayer(playerId)
+    local player = exports.qbx_core:GetPlayer(playerId)
 
     if not player then return end
 
@@ -90,7 +90,7 @@ local ox = {}
 function ox.isAuthorised(playerId, permission, permissionName)
     if config.item and exports.ox_inventory:GetItemCount(playerId, config.item) == 0 then return false end
 
-    local player = Ox.GetPlayer(playerId)
+    local player = exports.qbx_core:GetPlayer(playerId)
 
     if player?.getGroup('dispatch') then
         local grade = player.getGroup('dispatch')
